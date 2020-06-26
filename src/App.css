@@ -1,11 +1,11 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: [map] 67% [info] 33%;
+  grid-template-rows: [main] 67% [notes] 33%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
