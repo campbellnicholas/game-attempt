@@ -11,5 +11,78 @@
 .tree {
     width: 25px;
     height: 25px;
-    background: brown;
+    
+    .trunk {
+        fill: #684912
+    }
+    
+    .leaves {
+        fill: #f0f
+    }
+}
+
+.rock {
+    width: 25px;
+    height: 25px;
+
+    .mainrock {
+        fill:#646464
+    }
+    .lightrock {
+        fill:#969696
+    }
+    .shadowrock {
+        fill:#323232
+    }
+}
+
+.crabgrass {
+    width: 25px;
+    height: 25px;
+    fill: #030;
+}
+
+.spring {
+    .tree {
+        .leaves {
+            fill: springgreen;
+        }
+    }
+}
+
+.summer {
+    .tree {
+        .leaves {
+            fill: forestgreen;
+        }
+    }
+}
+
+.autumn {
+    .tree {
+        .leaves {
+            fill: darkorange;
+        }
+    }
+}
+
+.winter {
+    .tree {
+        .leaves {
+            fill: snow;
+        }
+    }
+}
+
+.passage {
+    width: 25px;
+    height: 25px;
+
+    &.hole {
+        background: #333;
+    }
+
+    &.stairs {
+        background: #999;
+    }
 }
