@@ -3,7 +3,7 @@ Hi. I don't know what this is yet. This is mostly just a thing for me to play ar
 
 So far I have:
 
-# Update: 20200630
+## Update: 20200630
 * A player that moves using the arrow keys (and moves according to CSS Grid)
 * A rudimentary map structure that allows for different kinds of maps
 * Two very plain maps (Green Hill and Underhill)
