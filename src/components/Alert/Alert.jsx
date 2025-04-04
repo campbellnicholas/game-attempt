@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Alert.scss';
 import cx from 'classnames';
 
-// TODO: Make the alert "toast" properly every time a new alert comes over
+const ALERT_TYPES = {
+    INFO: 'info',
+    SUCCESS: 'success',
+    WARNING: 'warning',
+    ERROR: 'error'
+};
 
-export default function Alert(props) {
+export default function Alert({ message, type = ALERT_TYPES.INFO }) {
     return (
-        <p className='alert'>{props.message}</p>
+        <dialog 
+            key={`${type}-${Date.now()}`} 
+            className={cx('alert', `alert--${type}`)}
+        >
+            {message}
+        </dialog>
     )
 }
+
+Alert.TYPES = ALERT_TYPES;

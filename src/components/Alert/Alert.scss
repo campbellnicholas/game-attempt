@@ -1,11 +1,30 @@
+dialog {
+  display: flex;
+}
+
 .alert {
     border-radius: 10px;
-    background: #9004;
     color: white;
     font-weight: 700;
     font-family: 'Noto Serif', serif;
     animation: fadeInOut ease 8s;
     opacity: 0;
+  
+    &--info {
+      background: #0044;
+    }
+  
+    &--success {
+      background: #3f35
+    }
+  
+    &--warning {
+      background: #f335;
+    }
+  
+    &--error {
+      background: #f00;
+    }
   }
   
   @keyframes fadeInOut {
