@@ -11,7 +11,8 @@ const greenHill = {
         rock: ['12/12'],
     },
     flourishes: {
-        crabgrass: ['12/11', '12/13', '11/12', '13/12']
+        crabgrass: ['12/11', '12/13', '11/12', '13/12'],
+        sweet: ['6/9'],
     },
     background: '#009900',
     season: 'spring',

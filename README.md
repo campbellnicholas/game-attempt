@@ -5,6 +5,14 @@ So far I have:
 
 ## Changelog
 
+### Update: 20250405
+* Upgraded to React 18 and implemented concurrent rendering features
+* Modularized map elements (Tree, Rock, Crabgrass, Passage) into separate components
+* Added proper SCSS files for each map element component
+* Updated Map component to use new modular components
+* Fixed React 18 deprecation warning by implementing createRoot API
+* Added Log window to keep track of status updates
+
 ### Update: 20250404
 * Added alert types (info, success, warning, error) with different colors
 * Updated passage alerts to use appropriate types (warning for holes, success for stairs)

@@ -3,6 +3,7 @@ import './App.scss';
 import Map from './components/Map/Map';
 import Player from './components/Player/Player';
 import Alert from './components/Alert/Alert';
+import Log from './components/Log/Log';
 import { Maps } from './layers/maps/Maps';
 import { updatePosition as updatePositionUtil } from './utils/positionUtils';
 
@@ -19,12 +20,9 @@ function App() {
   const [alertType, setAlertType] = useState('info');
   const [position, setPosition] = useState('7/8');
   const [mapLayer, setMapLayer] = useState(Maps.greenHill);
+  const [log, setLog] = useState('');
   const obstacles = useRef([]);
   const passages = useRef([]);
-
-
-  
-
 
   const updatePosition = useCallback(update => {
     const result = updatePositionUtil(
@@ -43,6 +41,7 @@ function App() {
       if (result.alert) {
         setAlert(result.alert);
         setAlertType(result.alertType);
+        setLog(prevLog => `${prevLog}\n${result.alert}`);
       } else if (alert) {
         // Clear alert if we moved away from a passage
         setAlert('');
@@ -100,7 +99,9 @@ function App() {
         <p>{mapLayer?.name && `Location: ${mapLayer.name}`}</p>
         {alert && <Alert message={alert} type={alertType} />}
       </div>
-      <div className="notes"></div>
+      <div className="notes">
+        <Log log={log} />
+      </div>
     </div>
   );
 }
