@@ -12,6 +12,9 @@
     "react-scripts": "5.0.1",
     "sass": "^1.86.2"
   },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
