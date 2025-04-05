@@ -6,6 +6,7 @@ import Alert from './components/Alert/Alert';
 import Log from './components/Log/Log';
 import { Maps } from './layers/maps/Maps';
 import { updatePosition as updatePositionUtil } from './utils/positionUtils';
+import { formatCurrentTime } from './utils/formatTime';
 
 // TODO: Call in these boundaries from a contants file or a separate config
 const boundaries = [1,16,16,1];
@@ -41,7 +42,7 @@ function App() {
       if (result.alert) {
         setAlert(result.alert);
         setAlertType(result.alertType);
-        setLog(prevLog => `${prevLog}\n${result.alert}`);
+        setLog(prevLog => `${prevLog}\n${formatCurrentTime()}: ${result.alert}`);
       } else if (alert) {
         // Clear alert if we moved away from a passage
         setAlert('');
