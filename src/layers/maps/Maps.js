@@ -23,6 +23,14 @@ const greenHill = {
             to: 'underHill',
             alert: '🕳️ You fell in a hole!',
             alertType: 'warning'
+        },
+        {
+            position: '3/13',
+            type: 'stairs',
+            direction: 'down',
+            to: 'underHill',
+            alert: '🪜 You found some stairs!',
+            alertType: 'success'
         }
     ]
 }
@@ -34,6 +42,7 @@ const underHill = {
         {
             position: '3/13',
             type: 'stairs',
+            direction: 'up',
             to: 'greenHill',
             alert: '🪜 You found some stairs!',
             alertType: 'success'

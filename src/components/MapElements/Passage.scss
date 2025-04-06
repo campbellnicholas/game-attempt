@@ -1,6 +1,7 @@
 .passage {
     width: 25px;
     height: 25px;
+    position: relative;
 
     &.hole {
         background: #333;
@@ -8,6 +9,45 @@
     }
 
     &.stairs {
-        background: #999;
+        background: linear-gradient(
+            to bottom,
+            #333 0%,
+            #333 25%,
+            transparent 25%,
+            transparent 35%,
+            #333 35%,
+            #333 65%,
+            transparent 65%,
+            transparent 75%,
+            #333 75%,
+            #333 100%
+        );
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &.up::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid #333;
+        }
+
+        &.down::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            right: -10px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #333;
+        }
     }
 } 

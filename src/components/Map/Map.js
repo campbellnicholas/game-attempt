@@ -18,7 +18,14 @@ export default function Map(props) {
             {props?.obstacles?.tree?.map(gridArea => <Tree key={`tree-${gridArea}`} gridArea={gridArea} />)}
             {props?.obstacles?.rock?.map(gridArea => <Rock key={`rock-${gridArea}`} gridArea={gridArea} />)}
             {props?.flourishes?.crabgrass?.map(gridArea => <Crabgrass key={`crabgrass-${gridArea}`} gridArea={gridArea} />)}
-            {props?.passages?.map(passage => <Passage key={`passage-${passage}`} gridArea={passage.position} type={passage.type} />)}
+            {props?.passages?.map(passage => (
+                <Passage 
+                    key={`passage-${passage.position}`} 
+                    gridArea={passage.position} 
+                    type={passage.type} 
+                    direction={passage.direction}
+                />
+            ))}
         </div>
     );
 }
