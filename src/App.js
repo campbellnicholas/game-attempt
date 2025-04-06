@@ -7,6 +7,7 @@ import Log from './components/Log/Log';
 import { Maps } from './layers/maps/Maps';
 import { updatePosition as updatePositionUtil } from './utils/positionUtils';
 import { formatCurrentTime } from './utils/formatTime';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 // TODO: Call in these boundaries from a contants file or a separate config
 const boundaries = [1,16,16,1];
@@ -19,9 +20,9 @@ function App() {
   // REACT: Lifting up state
   const [alert, setAlert] = useState('');
   const [alertType, setAlertType] = useState('info');
-  const [position, setPosition] = useState('7/8');
-  const [mapLayer, setMapLayer] = useState(Maps.greenHill);
-  const [log, setLog] = useState('');
+  const [position, setPosition] = useLocalStorage('playerPosition', '7/8');
+  const [mapLayer, setMapLayer] = useLocalStorage('currentMap', Maps.greenHill);
+  const [log, setLog] = useLocalStorage('gameLog', '');
   const obstacles = useRef([]);
   const passages = useRef([]);
 

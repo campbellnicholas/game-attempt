@@ -12,6 +12,9 @@ So far I have:
 * Updated Map component to use new modular components
 * Fixed React 18 deprecation warning by implementing createRoot API
 * Added Log window to keep track of status updates
+* Added localStorage persistence for player position, current map, and game log
+* Created useLocalStorage custom hook for state management
+* Added timestamp formatting utility for log entries
 
 ### Update: 20250404
 * Added alert types (info, success, warning, error) with different colors
