@@ -1,9 +1,10 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useTransition, useDeferredValue } from 'react';
 import './App.scss';
 import Map from './components/Map/Map';
 import Player from './components/Player/Player';
 import Alert from './components/Alert/Alert';
 import Log from './components/Log/Log';
+import Loading from './components/Loading/Loading';
 import { Maps } from './layers/maps/Maps';
 import { updatePosition as updatePositionUtil } from './utils/positionUtils';
 import { formatCurrentTime } from './utils/formatTime';
@@ -17,6 +18,8 @@ const boundaries = [1,16,16,1];
  * @returns {JSX.Element} The rendered game application
  */
 function App() {
+  // Concurrent features
+  const [isPending, startTransition] = useTransition();
 
   // Player Position
 
@@ -27,6 +30,10 @@ function App() {
   const [position, setPosition] = useLocalStorage('playerPosition', '7/8');
   const [mapLayer, setMapLayer] = useLocalStorage('currentMap', Maps.greenHill);
   const [log, setLog] = useLocalStorage('gameLog', '');
+  
+  // Defer log updates as they're not critical
+  const deferredLog = useDeferredValue(log);
+  
   const obstacles = useRef([]);
   const passages = useRef([]);
 
@@ -40,9 +47,11 @@ function App() {
     );
 
     if (result) {
-      // Batch position and map changes together
+      // Use transition for map changes
       if (result.mapChange) {
-        setMapLayer(Maps[result.mapChange]);
+        startTransition(() => {
+          setMapLayer(Maps[result.mapChange]);
+        });
       }
       setPosition(result.position);
 
@@ -55,7 +64,7 @@ function App() {
         setAlert('');
       }
     }
-  }, [position, setPosition, setMapLayer, setAlert, setAlertType, alert]);
+  }, [position, setPosition, setMapLayer, setAlert, setAlertType, alert, startTransition]);
 
   // HOOKS: useEffect
   useEffect(() => {
@@ -98,6 +107,7 @@ function App() {
 
   return (
     <div className="App">
+      <Loading isLoading={isPending} />
       <div className="map">
         <Map {...mapLayer} />
         <Player gridArea={position} />
@@ -108,7 +118,7 @@ function App() {
         {alert && <Alert message={alert} type={alertType} />}
       </div>
       <div className="notes">
-        <Log log={log} />
+        <Log log={deferredLog} />
       </div>
     </div>
   );

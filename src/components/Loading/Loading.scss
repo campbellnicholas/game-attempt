@@ -1,0 +1,44 @@
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+
+    &-spinner {
+        font-size: 48px;
+        animation: spin 2s linear infinite;
+        margin-bottom: 16px;
+    }
+
+    &-text {
+        color: white;
+        font-size: 18px;
+        font-family: Roboto Mono, Roboto, courier, times, serif;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+} 
