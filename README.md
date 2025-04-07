@@ -5,6 +5,15 @@ So far I have:
 
 ## Changelog
 
+### Update: 20250406
+* Enhanced Player component with emoji-based sprite system
+* Added dynamic emoji changes for different interactions (items, enemies, NPCs, doors)
+* Implemented smooth movement and interaction animations
+* Removed rotation-based direction system for simpler, cleaner movement
+* Added interaction indicator with bounce animation
+* Optimized state updates using React 18's automatic batching
+* Improved component documentation with JSDoc comments
+
 ### Update: 20250405
 * Upgraded to React 18 and implemented concurrent rendering features
 * Modularized map elements (Tree, Rock, Crabgrass, Passage) into separate components

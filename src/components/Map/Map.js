@@ -1,4 +1,3 @@
-import React from 'react';
 import './Map.scss';
 import cx from 'classnames';
 import { Tree, Rock, Crabgrass, Passage } from '../MapElements';

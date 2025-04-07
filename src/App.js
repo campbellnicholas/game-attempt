@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import './App.scss';
 import Map from './components/Map/Map';
 import Player from './components/Player/Player';
@@ -12,6 +12,10 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 // TODO: Call in these boundaries from a contants file or a separate config
 const boundaries = [1,16,16,1];
 
+/**
+ * Main App component that manages game state and rendering
+ * @returns {JSX.Element} The rendered game application
+ */
 function App() {
 
   // Player Position
@@ -36,16 +40,18 @@ function App() {
     );
 
     if (result) {
-      setPosition(result.position);
+      // Batch position and map changes together
       if (result.mapChange) {
         setMapLayer(Maps[result.mapChange]);
       }
+      setPosition(result.position);
+
+      // Batch alert-related state updates
       if (result.alert) {
         setAlert(result.alert);
         setAlertType(result.alertType);
         setLog(prevLog => `${prevLog}\n${formatCurrentTime()}: ${result.alert}`);
       } else if (alert) {
-        // Clear alert if we moved away from a passage
         setAlert('');
       }
     }

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Alert.scss';
 import cx from 'classnames';
 
@@ -9,6 +8,12 @@ const ALERT_TYPES = {
     ERROR: 'error'
 };
 
+/**
+ * Alert component for displaying messages to the user
+ * @param {Object} props
+ * @param {string} props.message - The message to display
+ * @param {string} [props.type=ALERT_TYPES.INFO] - The type of alert (info, success, warning, error)
+ */
 export default function Alert({ message, type = ALERT_TYPES.INFO }) {
     return (
         <dialog 
